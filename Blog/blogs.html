@@ -23,7 +23,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="mystyle.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
 </head>
   <body>
     <header>
@@ -46,71 +46,60 @@
         </ul>
       </nav>
     </header>
+    <div id="PostForm" style="display:none">
     <form name="Post" onsubmit="return validateForm()" method="post">
       <h2>Add Post</h2>
       <div class="row">
-          <label>Full Name(required)</label>
-          <input type="text" name="name">
-          <div class="error" id="nameErr"></div>
+          <label>Title(required)</label>
+          <input type="text" name="title">
+          <div class="error" id="titleErr"></div>
       </div>
       <div class="row">
         <label for="img">Select image:</label>
         <input type="file" id="img" name="img" accept="image/*">
+        <div class="error" id="imageErr"></div>
       </div>
       <div class="row">
-          <label>Message(required)</label>
-          <textarea rows="4" cols="50" name="message"></textarea>
-          <div class="error" id="messErr"></div>
+          <label>Article(required)</label>
+          <textarea rows="4" cols="50" name="article"></textarea>
+          <div class="error" id="articleErr"></div>
 
       </div>
       <div class="row">
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" >
       </div>
   </form>
-    <div class="container">
-
+</div>
+  <div class="header float">
+    <h2>Healthing Living
+      <button type="button" onclick="display()" class="btn float-right btn-primary" >Add Post</button>
+    </h2>
+  </div>
+    <div class="container-fluid">
         <div class="row">
-    
-          <div class="col-md-8">
-    
-            <h1 class="my-4">Blogs
-                <button onclick="show(1)" class="btn btn-primary btn-lg float-right" role="button">Add Post</a>
-            </h1>
-            <div class="card mb-4">
-              <img class="card-img-top" src="../images/image1.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h2 class="card-title">Healthy foods</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+          <p id="test"></p>
+          <div class="leftcolumn" id="blogs">
+            <div class="card">
+              <h2>Eating Healthy</h2>
+              <img src="../images/image1.jpg" alt="Image" class="img" >
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
             </div>
-              <div class="card-footer text-muted">
-                Posted on January 1, 2020 by
-              </div>
-            </div>
-            <div class="card mb-4">
-                <img class="card-img-top" src="../images/image2.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h2 class="card-title">Exercising in quarantine</h2>
-                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-              </div>
-                <div class="card-footer text-muted">
-                  Posted on January 1, 2020 by
-                </div>
-            </div>
-            <div class="card mb-4">
-                <img class="card-img-top" src="../images/image3.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h2 class="card-title">Best foods before sleep</h2>
-                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-              </div>
-                <div class="card-footer text-muted">
-                  Posted on January 1, 2020 by
-                </div>
-            </div>
+          <div class="card">
+            <h2>Best Exercises in quarantine</h2>
+            <img src="../images/image2.jpg" alt="Image" class="img" >
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+          </div>
+          <div class="card">
+            <h2>Foods to eat before bed</h2>
+            <img src="../images/image3.jpg" alt="Image" class="img" >
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+          </div>
           </div>
         </div>
+         
     </div>
   </body>
   <script src="post.js" ></script>

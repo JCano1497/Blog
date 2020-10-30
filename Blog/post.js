@@ -1,60 +1,64 @@
 function printError(element, msg) {
     document.getElementById(element).innerHTML = msg;
 }
-
+function display() {
+    var x = document.getElementById('PostForm');
+    if (x.style.display === 'none') {
+      x.style.display = '';
+    } 
+  }
 
 function validateForm() {
 
     // Retrieving the values of form elements 
-    var name = document.Post.name.value;
-    var message= document.Post.message.value;
-    //var img=document.getElementById("img");
-    var nameErr = messErr = true;
+    var title = document.Post.title.value;
+    var article= document.Post.article.value;
+    var image=document.getElementById("img");
+    console.log(image.value.length);
+    var articleErr = imageErr = titleErr = true;
 
     // Validate name
-    if (name == "") {
-        printError("nameErr", "Please enter your name");
-    } else {
-        var regex = /^[a-zA-Z\s]+$/;
-        if (regex.test(name) === false) {
-            printError("nameErr", "Please enter a valid name");
-        } else {
-            printError("nameErr", "");
-            nameErr = false;
-        }
-    }
-
-    if(message.length==0){
-        printError("messErr", "Please enter a message");
+    if (title.length==0){
+        printError("titleErr","Please enter a title");
     }
     else{
-        printError("messErr","");
-        messErr = false;
-
+        printError("titleErr","");
+        titleErr=false;
     }
 
-    if (nameErr || messErr  == true) {
+    if(article.length==0){
+        printError("articleErr", "Please enter a message");
+    }
+    else{
+        printError("articleErr","");
+        articleErr = false;
+
+    }
+    if(image.files[0]==undefined || image.files[0]==null){
+        printError("imageErr", "Please select an image");
+    }
+    else{
+        printError("imageErr","");
+        imageErr = false;
+    }
+    if(articleErr==false && titleErr==false && imageErr==false){
+        post(title,article,image);
+    }
         return false;
-    } else {
-        alert('You have submitted the form..');
-        post(name,message);
-    }
 }
-function post(name,message){
-    var card = document.createElement('div');
-    card.className="card mb-4";
-    //var img=document.createElement('img');
-    //img.className="card-img-top";
-    var cardbody=document.createElement('div');
-    cardbody.className="card-body";
-    var cardheader=document.createElement('h2');
-    cardheader.innerHTML=name;
-    cardheader.className="card-title";
-    var article=document.createElement('p');
-    article.innerHTML=message;
-    cardbody.appendChild(cardheader);
-    cardbody.appendChild(article);
-    //card.appendChild(img);
-    card.appendChild(cardbody);
-    document.getElementsByClassName("col-md-8").appendChild(card);
+function post(title,article,image){
+    var card=document.createElement("div");
+    card.className="card";
+    var ArticleTitle=document.createElement("h2");
+    ArticleTitle.textContent=title;
+    var img=document.createElement("img");
+    img.className="img";
+    img.src=URL.createObjectURL(image.files[0]);
+    var paragraph=document.createElement("p");
+    paragraph.textContent=article;
+    card.appendChild(ArticleTitle);
+    card.appendChild(img);
+    card.appendChild(paragraph); 
+    document.getElementById("blogs").appendChild(card);
+
 }
